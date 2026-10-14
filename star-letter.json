@@ -1,0 +1,38 @@
+{
+  "gameId": 8757,
+  "title": "霍格沃茨：闭馆之夜",
+  "tags": [
+    "霍格沃茨同人",
+    "像素冒险",
+    "图书馆逃脱"
+  ],
+  "gameCategory": [
+    10002,
+    10005
+  ],
+  "summary": "掌机像素风的中文霍格沃茨探索游戏：在闭馆前查清被调包的魔法书，避开巡逻，用显影咒取回真书，并选择自己的结局。",
+  "cover": "./cover.png",
+  "gameFile": "./dist",
+  "gameType": 0,
+  "screen": 1,
+  "priceType": 0,
+  "visibility": 1,
+  "capabilityDeclaration": {
+    "schemaVersion": 1,
+    "capabilities": {
+      "storage": {
+        "enabled": false
+      },
+      "oss": {
+        "enabled": false
+      },
+      "ai": {
+        "enabled": false
+      },
+      "exchange": {
+        "enabled": false
+      }
+    }
+  },
+  "controls": "方向键/WASD移动，J/Z/空格互动，F显影，P暂停；手机可用屏幕方向键与按钮，也可点地图自动寻路。"
+}

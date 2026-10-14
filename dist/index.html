@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#111b2d">
+  <title>霍格沃茨：闭馆之夜 · 中文像素冒险</title>
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+  <main class="page">
+    <header class="heading">
+      <p class="eyebrow">HOGWARTS FAN GAME / 中文像素冒险</p>
+      <h1>霍格沃茨：闭馆之夜</h1>
+      <p class="subtitle">在钟声响起前，找回被调包的魔法书，穿过巡逻的走廊逃出图书馆。</p>
+    </header>
+
+    <section class="console" aria-label="霍格沃茨中文像素冒险游戏">
+      <div class="console-top"><span class="star">✦</span><span>MAGICAL POCKET · 01</span><span class="led"></span></div>
+      <div class="screen-shell">
+        <div class="hud">
+          <div><span class="hud-label">位置</span><strong id="roomLabel">庭院</strong></div>
+          <div><span class="hud-label">闭馆</span><strong id="timerLabel">08:00</strong></div>
+          <div><span class="hud-label">警戒</span><strong id="alertLabel">0 / 3</strong></div>
+        </div>
+        <div class="viewport">
+          <canvas id="game" width="480" height="360" aria-label="俯视角游戏地图，使用方向键或 WASD 移动"></canvas>
+          <div id="titleOverlay" class="title-overlay">
+            <div class="title-panel">
+              <p class="title-kicker">A PIXEL MAGIC ADVENTURE</p>
+              <div class="title-sigil">✦</div>
+              <h2>闭馆之夜</h2>
+              <p>霍格沃茨 · 中文同人小游戏</p>
+              <button id="startButton" type="button">开始游戏 <span>J / Z</span></button>
+              <button id="titleHelpButton" class="secondary" type="button">操作说明</button>
+            </div>
+          </div>
+          <div id="notice" class="notice" aria-live="polite"></div>
+        </div>
+        <div class="story-bar">
+          <div class="story-head"><span id="speaker">任务手记</span><span id="continueHint"></span></div>
+          <p id="storyText">走近人物与发光物件，按 J / Z 调查。先进入城堡，再去图书馆。</p>
+          <div id="choices" class="choices"></div>
+        </div>
+        <div class="objective"><span>当前任务</span><strong id="objectiveText">从庭院进入城堡</strong></div>
+      </div>
+      <div class="console-controls">
+        <div class="dpad" aria-label="移动方向键">
+          <button data-dir="up" aria-label="向上" type="button">▲</button>
+          <div><button data-dir="left" aria-label="向左" type="button">◀</button><button data-dir="right" aria-label="向右" type="button">▶</button></div>
+          <button data-dir="down" aria-label="向下" type="button">▼</button>
+        </div>
+        <div class="action-cluster">
+          <button id="spellButton" class="spell-button" type="button"><span>✦</span><small>F 显影</small></button>
+          <button id="interactButton" class="interact-button" type="button"><span>A</span><small>J / Z 互动</small></button>
+        </div>
+      </div>
+      <div class="console-bottom"><span>方向键 / WASD 移动</span><button id="pauseButton" type="button">暂停 P</button></div>
+    </section>
+
+    <aside class="guide">
+      <div><strong>01 · 调查</strong><span>查看 H-13 书架与借阅记录</span></div>
+      <div><strong>02 · 显影</strong><span>用 F 找出禁书区的隐藏书脊</span></div>
+      <div><strong>03 · 逃脱</strong><span>躲开巡逻，带书从庭院大门离开</span></div>
+    </aside>
+    <footer>原创中文同人重构 · 参考 <a href="https://vampigeon.itch.io/hogwarts-legacy-demake" target="_blank" rel="noopener noreferrer">Hogwarts Legacy Demake</a> 的掌机式探索结构；人物与道具图由生图生成。</footer>
+  </main>
+  <script src="./game.js"></script>
+  <script src="https://gz-vchar-pub.nosdn.127.net/star-letter/game-sdk/v2/sdk.iife.js"></script>
+  <script>
+    (async () => {
+      if (window.GameSDK) {
+        try { await window.GameSDK.init(); }
+        catch (err) {
+          if (window.GameSDK.isPlatformSDKError && window.GameSDK.isPlatformSDKError(err)) console.info('平台外离线试玩', err.code);
+          else console.info('平台初始化未完成，已进入离线试玩');
+        }
+      }
+      window.HogwartsPocket.boot();
+    })();
+  </script>
+</body>
+</html>
